@@ -1,0 +1,67 @@
+class Node{
+	int data;
+	Node next;
+	Node(int x){
+		data=x;
+		next=null;
+	}
+}
+
+class LinkedList{
+	public static Node insertNode(Node head,int data) {
+		Node newnode=new Node(data);
+		if(head==null) {
+			return newnode;
+		}
+		else {
+			Node curr=head;
+			while(curr.next!=null) {
+				curr=curr.next;
+			}
+			curr.next=newnode;
+			return head;
+		}
+	}
+	static Node removeDuplicates(Node head){
+		Node curr=head;
+		while(curr!=null && curr.next!=null) {
+			if(curr.data==curr.next.data) {
+				Node nextcurr=curr.next.next;
+				curr.next=nextcurr;
+				
+			}
+			else {
+				curr=curr.next;
+			}
+		}
+		return head;
+	}
+	static void printList(Node node) {
+        while (node != null) {
+            System.out.print(node.data + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
+	public static void main(String args[]) {
+		 Scanner sc=new Scanner(System.in);
+		 System.out.println("Enter the number of elements to be inserted in linked list");
+		 int n=sc.nextInt();
+		 Node head = null;
+
+	        System.out.println("Enter " + n + " sorted elements:");
+	        for (int i = 0; i < n; i++) {
+	            int data = sc.nextInt();
+	            head = insertNode(head, data);
+	        }
+
+	        System.out.println("Original linked list:");
+	        printList(head);
+
+	        head = removeDuplicates(head);
+
+	        System.out.println("Linked list after removing duplicates:");
+	        printList(head);
+	        sc.close();
+	}
+}
