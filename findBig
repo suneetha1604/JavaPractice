@@ -1,0 +1,29 @@
+class findBig{
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int size=0;
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		ArrayList<Integer> anslist =new ArrayList<Integer>();
+		size=sc.nextInt();
+		for(int i=0;i<size;i++) {
+			list.add(sc.nextInt());
+		}
+		
+		for(int i=0;i<size;i++) {
+			int flag=0;
+			for(int j=i+1;j<size;j++) {
+				if(list.get(i)<list.get(j)) {
+					anslist.add(list.get(j));
+					flag=1;
+					break;
+				}
+			}
+			if(flag==0) {
+				anslist.add(-1);
+			}
+		}
+		System.out.println(anslist.toString());
+		sc.close();
+		
+	}
+}
